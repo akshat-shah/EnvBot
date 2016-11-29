@@ -72,6 +72,13 @@ controller.hears("file", messageTypes, function(bot, message) {
 
         createDockerFile(repoData, function(dockerFile) {
             if (dockerFile) {
+
+                var err1 = "undefined";
+                var err2 = "Package manager not found";
+                if (dockerFile.search(err1) !== -1 || dockerFile.search(err2) !== -1) {
+                    return bot.reply(message, 'DockerizeMe cannot find the required files in the repository to create DockerFile.');
+                }
+                
                 var reply = {
                     "attachments": [{
                         "title": "Dockerfile",
@@ -171,6 +178,12 @@ controller.hears('image', messageTypes, function(bot, message) {
     createDockerFile(repoData, function(dockerFile) {
         if (dockerFile) {
 
+            var err1 = "undefined";
+            var err2 = "Package manager not found";
+            if (dockerFile.search(err1) !== -1 || dockerFile.search(err2) !== -1) {
+                return bot.reply(message, 'DockerizeMe cannot find the required files in the repository to create DockerFile.');
+            }
+            
             createDockerImage(repoData.name, function(err, data) {
                 if (err) {
                     console.log('Error while creating docker Image : ' + err);

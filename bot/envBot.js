@@ -10,15 +10,6 @@ var messageTypes = ['direct_message', 'direct_mention', 'mention'];
 var gitSite = /(http|ftp|https):\/\/(www.)?(github+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])?/;
 var urlPattern = /(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/;
 
-/* TESTBOT_TOKEN must be initialized in Environment Variables
- * add : export TESTBOT_TOKEN='xxxx'
- * run : source ~/bash_profile
- */
-if (!process.env.TESTBOT_TOKEN) {
-    console.log('Error: Specify token in environment');
-    process.exit(1);
-}
-
 /* DOCKERBOT_TOKEN must be initialized in Environment Variables
  * add : export DOCKERBOT_TOKEN='xxxx'
  * run : source ~/bash_profile
